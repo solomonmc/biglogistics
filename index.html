@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Biglogistics App Preview</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-theme="light">
+  <div class="app-device">
+    <header class="app-header">
+      <button class="brand-lockup" type="button" data-home aria-label="Go to home">
+        <span class="brand-mark">BL</span>
+        <span>
+          <span class="brand-name">Biglogistics</span>
+          <strong id="screenTitle">Sign in</strong>
+        </span>
+      </button>
+
+      <div class="header-actions">
+        <div class="role-tabs" id="roleTabs" role="tablist" aria-label="Preview role"></div>
+        <button class="icon-button theme-button" type="button" id="themeToggle" aria-label="Toggle theme">
+          <i class="bi bi-moon-stars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </header>
+
+    <main class="app-main" id="appMain">
+      <section class="auth-view active" id="authView" aria-labelledby="authTitle">
+        <div class="auth-hero">
+          <div class="auth-map">
+            <span class="pin pickup"></span>
+            <span class="pin dropoff"></span>
+            <span class="route-dot one"></span>
+            <span class="route-dot two"></span>
+            <span class="route-dot three"></span>
+            <span class="moving-van"><i class="bi bi-truck" aria-hidden="true"></i></span>
+          </div>
+          <span class="mini-label">Mobile logistics suite</span>
+          <h1 id="authTitle">Ship. Track. Assign.</h1>
+          <div class="auth-stats">
+            <span><strong>24</strong> active jobs</span>
+            <span><strong>18m</strong> avg pickup</span>
+            <span><strong>3</strong> roles</span>
+          </div>
+        </div>
+
+        <form class="auth-card" id="authForm">
+          <div class="panel-title">
+            <span>Demo sign in</span>
+            <span class="status-pill paid">Frontend</span>
+          </div>
+
+          <label class="input-field" for="authEmail">
+            <i class="bi bi-person" aria-hidden="true"></i>
+            <input id="authEmail" type="email" value="manager@biglogistics.ng" autocomplete="email">
+          </label>
+
+          <label class="input-field" for="authPassword">
+            <i class="bi bi-lock" aria-hidden="true"></i>
+            <input id="authPassword" type="password" value="biglogistics" autocomplete="current-password">
+          </label>
+
+          <div class="demo-role-grid" id="demoRoles"></div>
+
+          <button class="btn btn-dark w-100 primary-action" type="submit">
+            Open preview
+          </button>
+        </form>
+      </section>
+
+      <section class="role-panel" data-role-panel="customer">
+        <section class="view active" data-view="customer-home" aria-labelledby="customerHomeTitle">
+          <div class="section-heading compact">
+            <div>
+              <span class="mini-label">Customer</span>
+              <h1 id="customerHomeTitle">Send a package</h1>
+            </div>
+            <button class="icon-button" type="button" data-route="customer-support" aria-label="Open support">
+              <i class="bi bi-chat-dots" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div class="customer-hero" id="customerHero"></div>
+          <div class="quick-actions" id="customerQuickActions"></div>
+          <div class="section-heading">
+            <div>
+              <span class="mini-label">Live order</span>
+              <h2>Tracking</h2>
+            </div>
+            <button class="link-button" type="button" data-route="customer-tracking">View</button>
+          </div>
+          <div id="customerTrackingPreview"></div>
+          <div class="section-heading">
+            <div>
+              <span class="mini-label">Recent</span>
+              <h2>Shipments</h2>
+            </div>
+            <button class="link-button" type="button" data-route="customer-orders">All</button>
+          </div>
+          <div class="stack-list" id="customerRecentOrders"></div>
+        </section>
+
+        <section class="view" data-view="customer-book" aria-labelledby="bookTitle">
+          <div class="section-heading compact">
+            <div>
+              <span class="mini-label">Booking</span>
+              <h1 id="bookTitle">New delivery</h1>
+            </div>
+            <button class="icon-button" type="button" data-route="customer-home" aria-label="Back home">
+              <i class="bi bi-arrow-left-short" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <form class="form-stack" id="bookingForm">
+            <div class="form-panel">
+              <div class="panel-title">
+                <span>Route</span>
+                <i class="bi bi-geo-alt" aria-hidden="true"></i>
+              </div>
+              <label class="form-label" for="pickupAddress">Pickup</label>
+              <input class="form-control" id="pickupAddress" value="12 Admiralty Way, Lekki">
+              <label class="form-label" for="dropoffAddress">Drop-off</label>
+              <input class="form-control" id="dropoffAddress" value="Plot 8 Allen Avenue, Ikeja">
+            </div>
+
+            <div class="form-panel">
+              <div class="panel-title">
+                <span>Package</span>
+                <i class="bi bi-box-seam" aria-hidden="true"></i>
+              </div>
+              <div class="two-col">
+                <label>
+                  <span class="form-label">Type</span>
+                  <select class="form-select" id="packageType">
+                    <option>Documents</option>
+                    <option selected>Small parcel</option>
+                    <option>Food pack</option>
+                    <option>Fragile item</option>
+                    <option>Bulk carton</option>
+                  </select>
+                </label>
+                <label>
+                  <span class="form-label">Speed</span>
+                  <select class="form-select" id="deliverySpeed">
+                    <option>Standard</option>
+                    <option selected>Express</option>
+                    <option>Priority</option>
+                  </select>
+                </label>
+              </div>
+              <label class="form-label" for="packageNote">Note</label>
+              <input class="form-control" id="packageNote" value="Call receiver at the gate">
+            </div>
+
+            <div class="quote-card" id="quoteCard"></div>
+          </form>
+        </section>
+
+        <section class="view" data-view="customer-tracking" aria-labelledby="trackingTitle">
+          <div class="section-heading compact">
+            <div>
+              <span class="mini-label">Live map</span>
+              <h1 id="trackingTitle">Track delivery</h1>
+            </div>
+            <button class="icon-button" type="button" data-route="customer-orders" aria-label="Open orders">
+              <i class="bi bi-receipt" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div id="customerTrackingFull"></div>
+        </section>
+
+        <section class="view" data-view="customer-orders" aria-labelledby="customerOrdersTitle">
+          <div class="section-heading compact">
+            <div>
+              <span class="mini-label">History</span>
+              <h1 id="customerOrdersTitle">Shipments</h1>
+            </div>
+            <button class="icon-button" type="button" data-route="customer-book" aria-label="Book delivery">
+              <i class="bi bi-plus-lg" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div class="quick-row" id="customerOrderFilters" aria-label="Shipment filters"></div>
+          <div class="stack-list spaced" id="customerOrderList"></div>
+        </section>
+
+        <section class="view" data-view="customer-support" aria-labelledby="supportTitle">
+          <div class="section-heading compact">
+            <div>
+              <span class="mini-label">Help desk</span>
+              <h1 id="supportTitle">Support</h1>
+            </div>
+            <button class="icon-button" type="button" data-chat-quick="Where is my rider?" aria-label="Ask support">
+              <i class="bi bi-lightning-charge" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div id="customerSupportPanel"></div>
+        </section>
+      </section>
+
+      <section class="role-panel" data-role-panel="driver">
+        <section class="view active" data-view="driver-home" aria-labelledby="driverHomeTitle">
+          <div class="section-heading compact">
+            <div>
+              <span class="mini-label">Driver</span>
+              <h1 id="driverHomeTitle">Today</h1>
+            </div>
+            <button class="availability-toggle" type="button" id="availabilityToggle" aria-label="Toggle availability"></button>
+          </div>
+
+          <div class="metric-grid" id="driverMetrics"></div>
+          <div id="driverActiveCard"></div>
+          <div class="section-heading">
+            <div>
+              <span class="mini-label">Queue</span>
+              <h2>Assigned jobs</h2>
+            </div>
+            <button class="link-button" type="button" data-route="driver-jobs">View</button>
+          </div>
+          <div class="stack-list" id="driverJobPreview"></div>
+        </section>
+
+        <section class="view" data-view="driver-jobs" aria-labelledby="driverJobsTitle">
+          <div class="section-heading compact">
+            <div>
+              <span class="mini-label">Dispatch</span>
+              <h1 id="driverJobsTitle">Job offers</h1>
+            </div>
+            <button class="icon-button" type="button" data-route="driver-route" aria-label="Open route">
+              <i class="bi bi-signpost-split" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div class="stack-list spaced" id="driverJobList"></div>
+        </section>
+
+        <section class="view" data-view="driver-route" aria-labelledby="driverRouteTitle">
+          <div class="section-heading compact">
+            <div>
+              <span class="mini-label">Active route</span>
+              <h1 id="driverRouteTitle">Run sheet</h1>
+            </div>
+            <button class="icon-button" type="button" data-route="driver-proof" aria-label="Proof of delivery">
+              <i class="bi bi-clipboard-check" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div id="driverRoutePanel"></div>
+        </section>
+
+        <section class="view" data-view="driver-proof" aria-labelledby="proofTitle">
+          <div class="section-heading compact">
+            <div>
+              <span class="mini-label">POD</span>
+              <h1 id="proofTitle">Complete job</h1>
+            </div>
+            <button class="icon-button" type="button" data-route="driver-route" aria-label="Back to route">
+              <i class="bi bi-arrow-left-short" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <form class="form-stack" id="proofForm">
+            <div class="form-panel">
+              <div class="panel-title">
+                <span>Receiver</span>
+                <span class="status-pill processing">Pending</span>
+              </div>
+              <label class="form-label" for="receiverName">Name</label>
+              <input class="form-control" id="receiverName" value="Ada Okafor">
+              <label class="form-label" for="receiverNote">Delivery note</label>
+              <input class="form-control" id="receiverNote" value="Package received in good condition">
+            </div>
+
+            <div class="proof-box">
+              <i class="bi bi-camera" aria-hidden="true"></i>
+              <span>Photo or signature placeholder</span>
+            </div>
+
+            <button class="btn btn-dark w-100 primary-action" type="submit">Mark delivered</button>
+          </form>
+        </section>
+
+        <section class="view" data-view="driver-wallet" aria-labelledby="driverWalletTitle">
+          <div class="section-heading compact">
+            <div>
+              <span class="mini-label">Payout</span>
+              <h1 id="driverWalletTitle">Wallet</h1>
+            </div>
+            <button class="icon-button" type="button" aria-label="Download statement">
+              <i class="bi bi-download" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div id="driverWalletPanel"></div>
+        </section>
+      </section>
+
+      <section class="role-panel" data-role-panel="admin">
+        <section class="view active" data-view="admin-dashboard" aria-labelledby="adminDashboardTitle">
+          <div class="section-heading compact">
+            <div>
+              <span class="mini-label">Admin</span>
+              <h1 id="adminDashboardTitle">Operations</h1>
+            </div>
+            <button class="icon-button" type="button" data-route="admin-issues" aria-label="Open alerts">
+              <i class="bi bi-bell" aria-hidden="true"></i>
+              <span class="nav-badge" id="issueBadge">0</span>
+            </button>
+          </div>
+
+          <div class="metric-grid" id="adminMetrics"></div>
+          <div id="adminOpsMap"></div>
+          <div class="admin-panel" id="adminAssignmentMini"></div>
+          <div class="section-heading">
+            <div>
+              <span class="mini-label">Live board</span>
+              <h2>Active jobs</h2>
+            </div>
+            <button class="link-button" type="button" data-route="admin-live">Open</button>
+          </div>
+          <div class="stack-list" id="adminRecentJobs"></div>
+        </section>
+
+        <section class="view" data-view="admin-live" aria-labelledby="adminLiveTitle">
+          <div class="section-heading compact">
+            <div>
+              <span class="mini-label">Command center</span>
+              <h1 id="adminLiveTitle">Live jobs</h1>
+            </div>
+            <button class="icon-button" type="button" data-route="admin-assign" aria-label="Open assignment">
+              <i class="bi bi-diagram-3" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div class="quick-row" id="adminJobFilters" aria-label="Admin job filters"></div>
+          <div class="stack-list spaced" id="adminJobList"></div>
+        </section>
+
+        <section class="view" data-view="admin-assign" aria-labelledby="adminAssignTitle">
+          <div class="section-heading compact">
+            <div>
+              <span class="mini-label">Auto dispatch</span>
+              <h1 id="adminAssignTitle">Assign jobs</h1>
+            </div>
+            <button class="icon-button" type="button" id="runAssignment" aria-label="Run assignment">
+              <i class="bi bi-magic" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div id="assignmentPanel"></div>
+        </section>
+
+        <section class="view" data-view="admin-drivers" aria-labelledby="adminDriversTitle">
+          <div class="section-heading compact">
+            <div>
+              <span class="mini-label">Fleet</span>
+              <h1 id="adminDriversTitle">Drivers</h1>
+            </div>
+            <button class="icon-button" type="button" aria-label="Add driver">
+              <i class="bi bi-plus-lg" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div class="stack-list spaced" id="adminDriverList"></div>
+        </section>
+
+        <section class="view" data-view="admin-customers" aria-labelledby="adminCustomersTitle">
+          <div class="section-heading compact">
+            <div>
+              <span class="mini-label">CRM</span>
+              <h1 id="adminCustomersTitle">Customers</h1>
+            </div>
+            <button class="icon-button" type="button" aria-label="Export customers">
+              <i class="bi bi-download" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div class="metric-grid two" id="customerMetrics"></div>
+          <div class="stack-list spaced" id="adminCustomerList"></div>
+        </section>
+
+        <section class="view" data-view="admin-issues" aria-labelledby="adminIssuesTitle">
+          <div class="section-heading compact">
+            <div>
+              <span class="mini-label">Escalations</span>
+              <h1 id="adminIssuesTitle">Issues</h1>
+            </div>
+            <button class="icon-button" type="button" data-resolve-all aria-label="Resolve all">
+              <i class="bi bi-check2-all" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div class="stack-list spaced" id="adminIssueList"></div>
+        </section>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" id="bottomNav" aria-label="App navigation"></nav>
+  </div>
+
+  <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3">
+    <div class="toast align-items-center text-bg-dark border-0" id="appToast" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="toastBody">Updated</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
